@@ -4,7 +4,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Chaos extends JavaPlugin {
     public ChaosConfigHandler chaosConfigHandler = new ChaosConfigHandler(this);
-    public ChaosThread chaosThread = new ChaosThread("chaosThread", this);
+    public ChaosThread chaosThread = new ChaosThread("Chaos Thread", this);
 
     public int minEventDuration = 30;
     public int maxEventDuration = 40;

@@ -1,10 +1,13 @@
 package com.netlify.hparcells.chaos;
 
+import com.netlify.hparcells.chaos.events.BedrockFeetEvent;
 import com.netlify.hparcells.chaos.events.ExampleChaosEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class ChaosThread implements Runnable {
@@ -16,7 +19,10 @@ public class ChaosThread implements Runnable {
     private ArrayList<String> chaosPlayers = new ArrayList<String>();
     private Boolean spoilers = false;
 
-    private ChaosEvent currentChaosEvent = new ExampleChaosEvent();
+    private ChaosEvent[] chaosEvents = {
+        new BedrockFeetEvent()
+    };
+    private ChaosEvent currentChaosEvent;
 
     ChaosThread(String name, Chaos plugin) {
         this.threadName = name;
@@ -49,11 +55,15 @@ public class ChaosThread implements Runnable {
         // The loop.
         while(!thread.isInterrupted()) {
             try {
-                // TODO: Select random chaos event.
+               currentChaosEvent = chaosEvents[new Random().nextInt(chaosEvents.length)];
 
                 // Enable
                 chaosPlayers.forEach((player) -> {
-                    currentChaosEvent.onEnable((player));
+                    new BukkitRunnable() {
+                        public void run() {
+                            currentChaosEvent.onEnable((player));
+                        }
+                    }.runTask(plugin);
                 });
                 if(spoilers) {
                     Bukkit.broadcastMessage(ChatColor.GREEN + "Chaos: " + currentChaosEvent.getName());
