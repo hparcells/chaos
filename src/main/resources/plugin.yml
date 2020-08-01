@@ -7,6 +7,6 @@ author: MythicHunter758
 commands:
   chaos:
     description: Chaos base command.
-    usage: /chaos [action]
-    permission: chaos.use
-    permission-message: You don't have <permission>
+permissions:
+  chaos.use:
+    description: Able to use all the commands in the chaos plugin.

@@ -2,16 +2,16 @@ package com.netlify.hparcells.chaos.events;
 
 import com.netlify.hparcells.chaos.ChaosEvent;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 public class ExampleChaosEvent extends ChaosEvent {
-    public String name = "Example Event";
-
     public void onEnable(String username) {
         Player target = (Bukkit.getServer().getPlayer(username));
 
         if(target != null) {
-            System.out.println("Enabling for: " + username);
+            target.getInventory().addItem(new ItemStack(Material.IRON_AXE));
         }
     }
     public void onDisable(String username) {
@@ -20,5 +20,8 @@ public class ExampleChaosEvent extends ChaosEvent {
         if(target != null) {
             System.out.println("Disabling for: " + username);
         }
+    }
+    public String getName() {
+        return "Example Event";
     }
 }
