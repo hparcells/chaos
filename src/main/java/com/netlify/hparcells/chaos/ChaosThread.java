@@ -1,7 +1,6 @@
 package com.netlify.hparcells.chaos;
 
-import com.netlify.hparcells.chaos.events.BedrockFeetEvent;
-import com.netlify.hparcells.chaos.events.ExampleChaosEvent;
+import com.netlify.hparcells.chaos.events.*;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -20,7 +19,24 @@ public class ChaosThread implements Runnable {
     private Boolean spoilers = false;
 
     private ChaosEvent[] chaosEvents = {
-        new BedrockFeetEvent()
+        new BedrockFeetEvent(),
+        new HBannerEvent(),
+        new BeefEvent(),
+        new SkydiveEvent(),
+        new ButterfingersEvent(),
+        new TripEvent(),
+        //new SpeedEvent(),
+        //new JumpBoostEvent(),
+        new FakeCreeperEvent(),
+        new DiamondPickaxeEvent(),
+        //new BlindnessEvent(),
+        //new MiningFatigueEvent(),
+        //new HasteEvent(),
+        new IgniteEvent(),
+        new GardenerEvent(),
+        new CreeperEvent(),
+        new HalfHeartEvent(),
+        new LightningEvent()
     };
     private ChaosEvent currentChaosEvent;
 
@@ -74,7 +90,11 @@ public class ChaosThread implements Runnable {
 
                 // Disable
                 chaosPlayers.forEach((player) -> {
-                    currentChaosEvent.onDisable(player);
+                    new BukkitRunnable() {
+                        public void run() {
+                            currentChaosEvent.onDisable(player);
+                        }
+                    }.runTask(plugin);
                 });
             }catch(InterruptedException e) {
                 thread.interrupt();
@@ -96,7 +116,11 @@ public class ChaosThread implements Runnable {
             thread = null;
         }
         chaosPlayers.forEach((player) -> {
-            currentChaosEvent.onDisable(player);
+            new BukkitRunnable() {
+                public void run() {
+                    currentChaosEvent.onDisable(player);
+                }
+            }.runTask(plugin);
         });
     }
 
