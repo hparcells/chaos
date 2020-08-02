@@ -17,3 +17,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Known Bugs
 - Events including effects have been temporarily disabled, until a fix is found (#1).
+- Items in the armor slots and the off hand will be kept in the inventory, and duplicated on the ground when the trip
+event occurs.
