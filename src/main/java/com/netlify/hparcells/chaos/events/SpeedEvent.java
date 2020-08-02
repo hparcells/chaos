@@ -14,6 +14,7 @@ public class SpeedEvent extends ChaosEvent {
             target.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, Integer.MAX_VALUE, 255));
         }
     }
+
     public void onDisable(String username) {
         Player target = (Bukkit.getServer().getPlayer(username));
 
@@ -21,6 +22,7 @@ public class SpeedEvent extends ChaosEvent {
             target.removePotionEffect(PotionEffectType.SPEED);
         }
     }
+
     public String getName() {
         return "I am speed.";
     }

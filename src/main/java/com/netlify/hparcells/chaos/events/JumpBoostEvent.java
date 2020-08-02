@@ -14,6 +14,7 @@ public class JumpBoostEvent extends ChaosEvent {
             target.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, Integer.MAX_VALUE, 50));
         }
     }
+
     public void onDisable(String username) {
         Player target = (Bukkit.getServer().getPlayer(username));
 
@@ -21,6 +22,7 @@ public class JumpBoostEvent extends ChaosEvent {
             target.removePotionEffect(PotionEffectType.JUMP);
         }
     }
+
     public String getName() {
         return "Jump";
     }

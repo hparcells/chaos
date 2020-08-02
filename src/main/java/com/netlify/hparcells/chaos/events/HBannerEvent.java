@@ -20,7 +20,7 @@ public class HBannerEvent extends ChaosEvent {
         if(target != null) {
             ItemStack banner = new ItemStack(Material.WHITE_BANNER);
 
-            BannerMeta bannerMeta = (BannerMeta)banner.getItemMeta();
+            BannerMeta bannerMeta = (BannerMeta) banner.getItemMeta();
             List<Pattern> patterns = new ArrayList<Pattern>();
             patterns.add(new Pattern(DyeColor.RED, PatternType.STRIPE_LEFT));
             patterns.add(new Pattern(DyeColor.RED, PatternType.STRIPE_RIGHT));
@@ -35,6 +35,7 @@ public class HBannerEvent extends ChaosEvent {
             target.getInventory().addItem(banner);
         }
     }
+
     public String getName() {
         return "H";
     }

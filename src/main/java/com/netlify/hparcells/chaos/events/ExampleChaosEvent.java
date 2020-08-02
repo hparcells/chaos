@@ -12,6 +12,7 @@ public class ExampleChaosEvent extends ChaosEvent {
             System.out.println("Enabling for: " + username);
         }
     }
+
     public void onDisable(String username) {
         Player target = (Bukkit.getServer().getPlayer(username));
 
@@ -19,6 +20,7 @@ public class ExampleChaosEvent extends ChaosEvent {
             System.out.println("Disabling for: " + username);
         }
     }
+
     public String getName() {
         return "Example Event";
     }

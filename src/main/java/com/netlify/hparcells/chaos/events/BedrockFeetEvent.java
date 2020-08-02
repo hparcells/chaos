@@ -13,6 +13,7 @@ public class BedrockFeetEvent extends ChaosEvent {
             target.getLocation().subtract(0, 1, 0).getBlock().setType(Material.BEDROCK);
         }
     }
+
     public String getName() {
         return "Bedrock Feet";
     }

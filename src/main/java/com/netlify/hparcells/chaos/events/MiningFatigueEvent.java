@@ -14,6 +14,7 @@ public class MiningFatigueEvent extends ChaosEvent {
             target.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_DIGGING, Integer.MAX_VALUE, 255));
         }
     }
+
     public void onDisable(String username) {
         Player target = (Bukkit.getServer().getPlayer(username));
 
@@ -21,6 +22,7 @@ public class MiningFatigueEvent extends ChaosEvent {
             target.removePotionEffect(PotionEffectType.SLOW_DIGGING);
         }
     }
+
     public String getName() {
         return "Mining Fatigue";
     }

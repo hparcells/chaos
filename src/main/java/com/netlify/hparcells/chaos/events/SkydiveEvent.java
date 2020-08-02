@@ -12,10 +12,13 @@ public class SkydiveEvent extends ChaosEvent {
         Player target = (Bukkit.getServer().getPlayer(username));
 
         if(target != null) {
-            Location location = new Location(target.getWorld(), target.getLocation().getX(), target.getLocation().getY() + 100, target.getLocation().getZ());
+            Location location = new Location(target.getWorld(), target.getLocation().getX(),
+                                             target.getLocation().getY() + 100, target.getLocation().getZ()
+            );
             target.teleport(location);
         }
     }
+
     public String getName() {
         return "Skydive";
     }

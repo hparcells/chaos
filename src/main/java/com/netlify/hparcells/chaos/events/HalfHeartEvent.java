@@ -13,6 +13,7 @@ public class HalfHeartEvent extends ChaosEvent {
             target.setHealth(1);
         }
     }
+
     public String getName() {
         return "Half a Heart";
     }

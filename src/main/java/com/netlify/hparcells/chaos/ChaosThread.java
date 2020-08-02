@@ -36,7 +36,9 @@ public class ChaosThread implements Runnable {
         new GardenerEvent(),
         new CreeperEvent(),
         new HalfHeartEvent(),
-        new LightningEvent()
+        new LightningEvent(),
+        new AnvilEvent(),
+        new ClearLagEvent()
     };
     private ChaosEvent currentChaosEvent;
 
@@ -50,11 +52,13 @@ public class ChaosThread implements Runnable {
             chaosPlayers.add(username);
         }
     }
+
     public void removePlayer(String username) {
         if(chaosPlayers.contains(username)) {
             chaosPlayers.remove(chaosPlayers.indexOf(username));
         }
     }
+
     public Boolean toggleSpoilers() {
         spoilers = !spoilers;
         return spoilers;
@@ -63,7 +67,10 @@ public class ChaosThread implements Runnable {
     public void run() {
         // Starting pause.
         try {
-            Thread.sleep((ThreadLocalRandom.current().nextInt(plugin.minEventDuration, plugin.maxEventDuration + 1)) * 1000);
+            Thread.sleep(
+                ThreadLocalRandom.current().nextInt(plugin.minEventDuration, plugin.maxEventDuration + 1)
+                * 1000
+            );
         }catch(InterruptedException e) {
             thread.interrupt();
         }
@@ -71,7 +78,7 @@ public class ChaosThread implements Runnable {
         // The loop.
         while(!thread.isInterrupted()) {
             try {
-               currentChaosEvent = chaosEvents[new Random().nextInt(chaosEvents.length)];
+                currentChaosEvent = chaosEvents[new Random().nextInt(chaosEvents.length)];
 
                 // Enable
                 chaosPlayers.forEach((player) -> {
@@ -86,7 +93,13 @@ public class ChaosThread implements Runnable {
                 }
 
                 // Wait
-                Thread.sleep((ThreadLocalRandom.current().nextInt(plugin.minEventDuration, plugin.maxEventDuration + 1)) * 1000);
+                Thread.sleep(
+                    ThreadLocalRandom.current().nextInt(
+                        plugin.minEventDuration,
+                        plugin.maxEventDuration + 1
+                    )
+                    * 1000
+                );
 
                 // Disable
                 chaosPlayers.forEach((player) -> {
@@ -110,6 +123,7 @@ public class ChaosThread implements Runnable {
         }
         return false;
     }
+
     public void stop() {
         if(thread != null) {
             thread.interrupt();

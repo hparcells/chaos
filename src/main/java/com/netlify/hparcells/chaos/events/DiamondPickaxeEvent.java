@@ -14,6 +14,7 @@ public class DiamondPickaxeEvent extends ChaosEvent {
             target.getInventory().addItem(new ItemStack(Material.DIAMOND_PICKAXE));
         }
     }
+
     public String getName() {
         return "Diamond Pickaxe";
     }

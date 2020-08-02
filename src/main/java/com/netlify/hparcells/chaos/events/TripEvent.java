@@ -11,22 +11,23 @@ public class TripEvent extends ChaosEvent {
         Player target = (Bukkit.getServer().getPlayer(username));
 
         if(target != null) {
-            for (ItemStack itemStack : target.getInventory().getContents()) {
+            for(ItemStack itemStack : target.getInventory().getContents()) {
                 if(itemStack != null) {
                     Item droppedItem = target.getWorld().dropItemNaturally(target.getLocation(), itemStack);
                     target.getInventory().removeItem(itemStack);
-                    droppedItem.setPickupDelay(200);
+                    droppedItem.setPickupDelay(100);
                 }
             }
-            for (ItemStack itemStack : target.getInventory().getArmorContents()) {
+            for(ItemStack itemStack : target.getInventory().getArmorContents()) {
                 if(itemStack != null) {
                     Item droppedItem = target.getWorld().dropItemNaturally(target.getLocation(), itemStack);
                     target.getInventory().removeItem(itemStack);
-                    droppedItem.setPickupDelay(200);
+                    droppedItem.setPickupDelay(100);
                 }
             }
         }
     }
+
     public String getName() {
         return "Trip";
     }

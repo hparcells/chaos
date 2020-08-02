@@ -14,6 +14,7 @@ public class CreeperEvent extends ChaosEvent {
             target.getWorld().spawnEntity(target.getLocation().add(0, 3, 0), EntityType.CREEPER);
         }
     }
+
     public String getName() {
         return "Aw man.";
     }

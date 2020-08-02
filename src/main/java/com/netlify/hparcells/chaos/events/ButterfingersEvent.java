@@ -17,10 +17,11 @@ public class ButterfingersEvent extends ChaosEvent {
             if(itemInHand != null && itemInHand.getType() != Material.AIR) {
                 Item droppedMainHandItem = target.getWorld().dropItemNaturally(target.getLocation(), itemInHand);
                 target.getInventory().remove(itemInHand);
-                droppedMainHandItem.setPickupDelay(200);
+                droppedMainHandItem.setPickupDelay(100);
             }
         }
     }
+
     public String getName() {
         return "Butterfingers";
     }

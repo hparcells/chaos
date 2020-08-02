@@ -21,6 +21,7 @@ public class BeefEvent extends ChaosEvent {
             target.getInventory().addItem(new ItemStack(Material.COOKED_BEEF, 16));
         }
     }
+
     public String getName() {
         return "Beef";
     }

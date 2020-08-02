@@ -3,7 +3,6 @@ package com.netlify.hparcells.chaos.events;
 import com.netlify.hparcells.chaos.ChaosEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -58,6 +57,7 @@ public class GardenerEvent extends ChaosEvent {
             target.getWorld().dropItemNaturally(target.getLocation(), new ItemStack(Material.SWEET_BERRIES, 16));
         }
     }
+
     public String getName() {
         return "Gardener";
     }

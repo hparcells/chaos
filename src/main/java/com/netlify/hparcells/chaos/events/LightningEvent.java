@@ -13,6 +13,7 @@ public class LightningEvent extends ChaosEvent {
             target.getWorld().strikeLightning(target.getLocation());
         }
     }
+
     public String getName() {
         return "Zeus";
     }

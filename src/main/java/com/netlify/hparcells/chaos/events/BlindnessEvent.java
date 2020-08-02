@@ -14,6 +14,7 @@ public class BlindnessEvent extends ChaosEvent {
             target.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, Integer.MAX_VALUE, 1));
         }
     }
+
     public void onDisable(String username) {
         Player target = (Bukkit.getServer().getPlayer(username));
 
@@ -21,6 +22,7 @@ public class BlindnessEvent extends ChaosEvent {
             target.removePotionEffect(PotionEffectType.BLINDNESS);
         }
     }
+
     public String getName() {
         return "Blind";
     }
