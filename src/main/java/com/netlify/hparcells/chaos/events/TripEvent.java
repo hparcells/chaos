@@ -18,13 +18,11 @@ public class TripEvent extends ChaosEvent {
                     droppedItem.setPickupDelay(100);
                 }
             }
-            for(ItemStack itemStack : target.getInventory().getArmorContents()) {
-                if(itemStack != null) {
-                    Item droppedItem = target.getWorld().dropItemNaturally(target.getLocation(), itemStack);
-                    target.getInventory().removeItem(itemStack);
-                    droppedItem.setPickupDelay(100);
-                }
-            }
+            target.getInventory().setHelmet(null);
+            target.getInventory().setChestplate(null);
+            target.getInventory().setLeggings(null);
+            target.getInventory().setBoots(null);
+            target.getInventory().setItemInOffHand(null);
         }
     }
 
