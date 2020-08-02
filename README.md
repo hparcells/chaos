@@ -11,7 +11,11 @@ by the outcome of the chaos events. Note: this does reset whenever the plugin is
 - `/chaos players` will list the players that will be affected by the outcome of the chaos events.
 - `/chaos spoilers` will toggle spoilers for the game. The default is OFF. Spoilers announce in chat the current
  event in the chat.
- 
+
+**Permissions**
+
+- `chaos.use`: Use the plugin's commands.
+
 **Config File**
 
 A config will be generated in a `plugins/Chaos` folder. Two values will be provided, a minimum and a maximum value
