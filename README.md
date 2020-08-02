@@ -1,9 +1,6 @@
 # Chaos
 > Fun with random Minecraft events.
 
-![](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png)
-
-
 ## Usage
 - `/chaos [add|remove] [username]` will add or remove players from the list of players that will be affected
 by the outcome of the chaos events. Note: this does reset whenever the plugin is reloaded.
