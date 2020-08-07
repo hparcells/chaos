@@ -25,13 +25,13 @@ public class ChaosThread implements Runnable {
         new SkydiveEvent(),
         new ButterfingersEvent(),
         new TripEvent(),
-        //new SpeedEvent(),
-        //new JumpBoostEvent(),
+        new SpeedEvent(),
+        new JumpBoostEvent(),
         new FakeCreeperEvent(),
         new DiamondPickaxeEvent(),
-        //new BlindnessEvent(),
-        //new MiningFatigueEvent(),
-        //new HasteEvent(),
+        new BlindnessEvent(),
+        new MiningFatigueEvent(),
+        new HasteEvent(),
         new IgniteEvent(),
         new GardenerEvent(),
         new CreeperEvent(),
@@ -109,6 +109,8 @@ public class ChaosThread implements Runnable {
                         }
                     }.runTask(plugin);
                 });
+
+                Thread.sleep(1000);
             }catch(InterruptedException e) {
                 thread.interrupt();
             }

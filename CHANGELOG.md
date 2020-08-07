@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+### Added
+- Effect Events
+  - Speed
+  - Jump Boost
+  - Blindness
+  - Mining Fatigue
+  - Haste
+
+### Fixed
+- Fixed an issue involving effects not being removed. (#1)
+
 ## [1.0.1] - 2020-08-02
 ### Fixed
 - Fixed duplication glitch involving the armor and off hand item with the trip event.
