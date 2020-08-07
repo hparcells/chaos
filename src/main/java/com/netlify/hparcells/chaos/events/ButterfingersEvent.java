@@ -2,6 +2,7 @@ package com.netlify.hparcells.chaos.events;
 
 import com.netlify.hparcells.chaos.ChaosEvent;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;

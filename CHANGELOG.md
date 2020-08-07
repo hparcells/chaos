@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 ### Added
+- More Events
+  - Gives you a diamond.
+  - Sets the difficulty to Hard.
+  - Sets your XP to 69 levels.
+  - Sets your XP to 0 levels.
+  - Sets lava at Y=255.
+  - Creates a tree at your location.
 - Effect Events
   - Speed
   - Jump Boost
