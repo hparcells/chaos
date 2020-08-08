@@ -1,6 +1,10 @@
 # Chaos
 > Fun with random Minecraft events.
 
+## About
+Chaos is Minecraft plugin that runs random events (good or bad) periodically through out. The default is set to a
+random time between 30 and 40 seconds. Read more about the events in the EVENTS.md file in the GitHub repository.
+
 ## Usage
 - `/chaos [add|remove] [username]` will add or remove players from the list of players that will be affected
 by the outcome of the chaos events. Note: this does reset whenever the plugin is reloaded.
@@ -17,6 +21,9 @@ by the outcome of the chaos events. Note: this does reset whenever the plugin is
 
 A config will be generated in a `plugins/Chaos` folder. Two values will be provided, a minimum and a maximum value
 for how long events should last.
+
+## Demo Video
+[https://www.youtube.com/watch?v=mSM8qk2JbMU](https://www.youtube.com/watch?v=mSM8qk2JbMU)
 
 ## Disclaimer
 This plugin has the possibility to cause permanent damage in your world, or make you *very very* sad. Please do not

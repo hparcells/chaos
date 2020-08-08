@@ -3,6 +3,7 @@ package com.netlify.hparcells.chaos;
 import com.netlify.hparcells.chaos.events.*;
 import com.netlify.hparcells.chaos.events.explosivebeds.ExplosiveBedsEvent;
 import com.netlify.hparcells.chaos.events.firetrail.FireTrailEvent;
+import com.netlify.hparcells.chaos.events.foodpoisoning.FoodPoisoningEvent;
 import com.netlify.hparcells.chaos.events.slipperybuckets.SlipperyBucketsEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -50,7 +51,12 @@ public class ChaosThread implements Runnable {
         new DiamondEvent(),
         new FireTrailEvent(),
         new ExplosiveBedsEvent(),
-        new SlipperyBucketsEvent()
+        new SlipperyBucketsEvent(),
+        // new ChatKickEvent(),
+        new FullHealEvent(),
+        new FullHungerEvent(),
+        new ZeroHungerEvent(),
+        new FoodPoisoningEvent()
     };
     private ChaosEvent currentChaosEvent;
 

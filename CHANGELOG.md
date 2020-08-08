@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## [1.1.0] - 2020-08-08
 ### Added
 - More Events
   - **Diamond**: Gives you a diamond.
@@ -16,12 +16,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - **Fire Trail**
   - **Explosive Beds**: Boom!
   - **Slippery Buckets**: Dumps bucket contents at your feet.
+  - **Full Heal**: Sets your HP to max.
+  - **Full Hunger**: Sets your hunger and saturation to max.
+  - **Zero Hunger**: Removes all your hunger and saturation.
+  - **Food Poisoning**: All food items will give you food poisoning.
 - Effect Events
   - Speed
   - Jump Boost
   - Blindness
   - Mining Fatigue
   - Haste
+- Event list in the `EVENTS.md` file in the GitHub repository.
 
 ### Fixed
 - Fixed an issue involving effects not being removed. (#1)
