@@ -1,6 +1,9 @@
 package com.netlify.hparcells.chaos;
 
 import com.netlify.hparcells.chaos.events.*;
+import com.netlify.hparcells.chaos.events.explosivebeds.ExplosiveBedsEvent;
+import com.netlify.hparcells.chaos.events.firetrail.FireTrailEvent;
+import com.netlify.hparcells.chaos.events.slipperybuckets.SlipperyBucketsEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -19,32 +22,35 @@ public class ChaosThread implements Runnable {
     private Boolean spoilers = false;
 
     private ChaosEvent[] chaosEvents = {
-        // new BedrockFeetEvent(),
-        // new HBannerEvent(),
-        // new BeefEvent(),
-        // new SkydiveEvent(),
-        // new ButterfingersEvent(),
-        // new TripEvent(),
-        // new SpeedEvent(),
-        // new JumpBoostEvent(),
-        // new FakeCreeperEvent(),
-        // new DiamondPickaxeEvent(),
-        // new BlindnessEvent(),
-        // new MiningFatigueEvent(),
-        // new HasteEvent(),
-        // new IgniteEvent(),
-        // new GardenerEvent(),
-        // new CreeperEvent(),
-        // new HalfHeartEvent(),
-        // new LightningEvent(),
-        // new AnvilEvent(),
-        // new ClearLagEvent(),
-        // new SkyLavaEvent(),
-        // new ZeroXpEvent(),
-        // new NiceXpEvent(),
+        new BedrockFeetEvent(),
+        new HBannerEvent(),
+        new BeefEvent(),
+        new SkydiveEvent(),
+        new ButterfingersEvent(),
+        new TripEvent(),
+        new SpeedEvent(),
+        new JumpBoostEvent(),
+        new FakeCreeperEvent(),
+        new DiamondPickaxeEvent(),
+        new BlindnessEvent(),
+        new MiningFatigueEvent(),
+        new HasteEvent(),
+        new IgniteEvent(),
+        new GardenerEvent(),
+        new CreeperEvent(),
+        new HalfHeartEvent(),
+        new LightningEvent(),
+        new AnvilEvent(),
+        new ClearLagEvent(),
+        new SkyLavaEvent(),
+        new ZeroXpEvent(),
+        new NiceXpEvent(),
         new HardEvent(),
         new TreeEvent(),
-        new DiamondEvent()
+        new DiamondEvent(),
+        new FireTrailEvent(),
+        new ExplosiveBedsEvent(),
+        new SlipperyBucketsEvent()
     };
     private ChaosEvent currentChaosEvent;
 
@@ -90,7 +96,7 @@ public class ChaosThread implements Runnable {
                 chaosPlayers.forEach((player) -> {
                     new BukkitRunnable() {
                         public void run() {
-                            currentChaosEvent.onEnable((player));
+                            currentChaosEvent.onEnable(player, plugin);
                         }
                     }.runTask(plugin);
                 });
@@ -111,7 +117,7 @@ public class ChaosThread implements Runnable {
                 chaosPlayers.forEach((player) -> {
                     new BukkitRunnable() {
                         public void run() {
-                            currentChaosEvent.onDisable(player);
+                            currentChaosEvent.onDisable(player, plugin);
                         }
                     }.runTask(plugin);
                 });
@@ -140,7 +146,7 @@ public class ChaosThread implements Runnable {
         chaosPlayers.forEach((player) -> {
             new BukkitRunnable() {
                 public void run() {
-                    currentChaosEvent.onDisable(player);
+                    currentChaosEvent.onDisable(player, plugin);
                 }
             }.runTask(plugin);
         });
