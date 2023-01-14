@@ -1,7 +1,7 @@
 name: Chaos
 version: ${project.version}
-main: com.netlify.hparcells.chaos.Chaos
-api-version: 1.16
+main: com.themythichunter.chaos.Chaos
+api-version: 1.19
 description: Fun with random Minecraft events.
 author: MythicHunter758
 commands:
