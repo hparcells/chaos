@@ -5,7 +5,7 @@ import com.themythichunter.chaos.ChaosEvent;
 import org.bukkit.event.HandlerList;
 
 public class FireTrailEvent extends ChaosEvent {
-    private FireTrailListener fireTrailListener = new FireTrailListener();
+    private final FireTrailListener fireTrailListener = new FireTrailListener();
 
     public void onEnable(String username, Chaos plugin) {
         plugin.getServer().getPluginManager().registerEvents(fireTrailListener, plugin);

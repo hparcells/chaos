@@ -12,9 +12,8 @@ public class HardEvent extends ChaosEvent {
     public void onEnable(String username, Chaos plugin) {
         Player target = (Bukkit.getServer().getPlayer(username));
 
-        beforeDifficulty = target.getWorld().getDifficulty();
-
         if(target != null) {
+            beforeDifficulty = target.getWorld().getDifficulty();
             target.getWorld().setDifficulty(Difficulty.HARD);
         }
     }

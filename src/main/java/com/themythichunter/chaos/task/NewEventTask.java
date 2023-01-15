@@ -4,6 +4,8 @@ import com.themythichunter.chaos.Chaos;
 import com.themythichunter.chaos.Events;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Sound;
+import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.Random;
@@ -27,8 +29,16 @@ public class NewEventTask implements Runnable {
             }
         }.runTask(plugin));
 
+        // Play Sound
+        for(String username : plugin.chaosPlayers) {
+            Player player = Bukkit.getPlayer(username);
+
+            if(player != null) {
+                player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 1);
+            }
+        }
+
         // Spoilers
-        // TODO: Replace this with a title.
         if(plugin.spoilers) {
             Bukkit.broadcastMessage(ChatColor.GREEN + "Chaos: " + plugin.currentChaosEvent.getName());
         }

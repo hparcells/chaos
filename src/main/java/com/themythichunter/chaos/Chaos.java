@@ -1,6 +1,5 @@
 package com.themythichunter.chaos;
 
-import com.themythichunter.chaos.task.StopTask;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
 
@@ -31,7 +30,11 @@ public final class Chaos extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        this.scheduler.runTask(this, new StopTask(this));
+        if(currentChaosEvent != null) {
+            for(String username : chaosPlayers) {
+                currentChaosEvent.onDisable(username, this);
+            }
+        }
         getLogger().info("Chaos disabled.");
     }
 }

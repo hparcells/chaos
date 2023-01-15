@@ -12,7 +12,6 @@ public class ClearLagEvent extends ChaosEvent {
         Player target = (Bukkit.getServer().getPlayer(username));
 
         if(target != null) {
-
             for(Entity entity : target.getWorld().getEntities()) {
                 if(entity instanceof Item) {
                     entity.remove();

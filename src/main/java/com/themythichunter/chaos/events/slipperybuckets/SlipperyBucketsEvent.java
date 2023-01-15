@@ -5,7 +5,7 @@ import com.themythichunter.chaos.ChaosEvent;
 import org.bukkit.event.HandlerList;
 
 public class SlipperyBucketsEvent extends ChaosEvent {
-    private SlipperyBucketsListener slipperyBucketsListener = new SlipperyBucketsListener();
+    private final SlipperyBucketsListener slipperyBucketsListener = new SlipperyBucketsListener();
 
     public void onEnable(String username, Chaos plugin) {
         plugin.getServer().getPluginManager().registerEvents(slipperyBucketsListener, plugin);

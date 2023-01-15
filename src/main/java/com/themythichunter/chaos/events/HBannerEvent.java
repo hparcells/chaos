@@ -22,18 +22,22 @@ public class HBannerEvent extends ChaosEvent {
             ItemStack banner = new ItemStack(Material.WHITE_BANNER);
 
             BannerMeta bannerMeta = (BannerMeta) banner.getItemMeta();
-            List<Pattern> patterns = new ArrayList<Pattern>();
-            patterns.add(new Pattern(DyeColor.RED, PatternType.STRIPE_LEFT));
-            patterns.add(new Pattern(DyeColor.RED, PatternType.STRIPE_RIGHT));
-            patterns.add(new Pattern(DyeColor.RED, PatternType.STRIPE_MIDDLE));
-            patterns.add(new Pattern(DyeColor.WHITE, PatternType.BORDER));
 
-            bannerMeta.setPatterns(patterns);
-            bannerMeta.setDisplayName("The Holy H Banner");
 
-            banner.setItemMeta(bannerMeta);
+            if(bannerMeta != null) {
+                List<Pattern> patterns = new ArrayList<>();
+                patterns.add(new Pattern(DyeColor.RED, PatternType.STRIPE_LEFT));
+                patterns.add(new Pattern(DyeColor.RED, PatternType.STRIPE_RIGHT));
+                patterns.add(new Pattern(DyeColor.RED, PatternType.STRIPE_MIDDLE));
+                patterns.add(new Pattern(DyeColor.WHITE, PatternType.BORDER));
 
-            target.getInventory().addItem(banner);
+                bannerMeta.setPatterns(patterns);
+                bannerMeta.setDisplayName("The Holy H Banner");
+
+                banner.setItemMeta(bannerMeta);
+
+                target.getInventory().addItem(banner);
+            }
         }
     }
 
