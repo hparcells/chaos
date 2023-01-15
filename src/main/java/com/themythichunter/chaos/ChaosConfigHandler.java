@@ -18,20 +18,23 @@ public class ChaosConfigHandler {
 
     public void loadConfig() {
         if(!plugin.getDataFolder().exists()) {
-            plugin.getDataFolder().mkdir();
+            if(plugin.getDataFolder().mkdir()) {
+                plugin.getLogger().info("Created plugin folder.");
+            }
         }
 
         chaosConfigFile = new File(plugin.getDataFolder(), "config.yml");
 
         if(!chaosConfigFile.exists()) {
             try {
-                chaosConfigFile.createNewFile();
-                plugin.getConfig().options().copyDefaults(true);
-                plugin.saveConfig();
+                if(chaosConfigFile.createNewFile()) {
+                    plugin.getConfig().options().copyDefaults(true);
+                    plugin.saveConfig();
 
-                System.out.println("Created a config file.");
+                    plugin.getLogger().info("Created a config file.");
+                }
             }catch(IOException e) {
-                System.out.println("Error when creating the config file.");
+                plugin.getLogger().info("Error when creating the config file.");
             }
         }
 

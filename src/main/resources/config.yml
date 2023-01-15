@@ -1,4 +1,2 @@
 config:
-  event-duration:
-    min: 30
-    max: 40
+  event-duration: 30
