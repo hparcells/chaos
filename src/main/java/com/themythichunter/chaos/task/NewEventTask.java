@@ -18,19 +18,17 @@ public class NewEventTask implements Runnable {
     }
 
     public void run() {
-        plugin.currentChaosEvent = Events.CHAOS_EVENTS[new Random().nextInt(Events.CHAOS_EVENTS.length)];
-
-        // TODO: Countdown
+        plugin.settings.currentChaosEvent = Events.CHAOS_EVENTS[new Random().nextInt(Events.CHAOS_EVENTS.length)];
 
         // Enable
-        plugin.chaosPlayers.forEach((player) -> new BukkitRunnable() {
+        plugin.settings.chaosPlayers.forEach((player) -> new BukkitRunnable() {
             public void run() {
-                plugin.currentChaosEvent.onEnable(player, plugin);
+                plugin.settings.currentChaosEvent.onEnable(player, plugin);
             }
         }.runTask(plugin));
 
         // Play Sound
-        for(String username : plugin.chaosPlayers) {
+        for(String username : plugin.settings.chaosPlayers) {
             Player player = Bukkit.getPlayer(username);
 
             if(player != null) {
@@ -39,8 +37,8 @@ public class NewEventTask implements Runnable {
         }
 
         // Spoilers
-        if(plugin.spoilers) {
-            Bukkit.broadcastMessage(ChatColor.GREEN + "Chaos: " + plugin.currentChaosEvent.getName());
+        if(plugin.settings.spoilers) {
+            Bukkit.broadcastMessage(ChatColor.GREEN + "Chaos: " + plugin.settings.currentChaosEvent.getName());
         }
     }
 }

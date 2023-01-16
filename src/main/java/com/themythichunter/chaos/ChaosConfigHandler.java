@@ -9,7 +9,7 @@ import java.io.IOException;
 public class ChaosConfigHandler {
     private final Chaos plugin;
 
-    public FileConfiguration chaosConfig;
+    public FileConfiguration config;
     public File chaosConfigFile;
 
     public ChaosConfigHandler(Chaos plugin) {
@@ -42,6 +42,6 @@ public class ChaosConfigHandler {
     }
 
     public void reloadConfig() {
-        chaosConfig = YamlConfiguration.loadConfiguration(chaosConfigFile);
+        config = YamlConfiguration.loadConfiguration(chaosConfigFile);
     }
 }

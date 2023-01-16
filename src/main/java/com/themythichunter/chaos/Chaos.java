@@ -3,38 +3,51 @@ package com.themythichunter.chaos;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
 public final class Chaos extends JavaPlugin {
     public BukkitScheduler scheduler = getServer().getScheduler();
 
-    public ChaosConfigHandler chaosConfigHandler = new ChaosConfigHandler(this);
+    public ChaosConfigHandler configHandler = new ChaosConfigHandler(this);
+    public ChaosSettings settings;
 
-    // Game Stuff
-    // TODO: Maybe move?
-    public int eventDuration = 30;
-    public Boolean spoilers = false;
-    public final ArrayList<String> chaosPlayers = new ArrayList<>();
-    public ChaosEvent currentChaosEvent;
+    /**
+     * Takes away the current event.
+     */
+    public void stopCurrentEvent() {
+        if(this.settings.currentChaosEvent != null) {
+            for(String username : this.settings.chaosPlayers) {
+                this.settings.currentChaosEvent.onDisable(username, this);
+            }
+        }
+    }
+
+    /**
+     * Completely stops the Chaos game.
+     */
+    public void stopChaos() {
+        this.stopCurrentEvent();
+        this.scheduler.cancelTasks(this);
+    }
 
     @Override
     public void onEnable() {
-        chaosConfigHandler.loadConfig();
+        configHandler.loadConfig();
         Objects.requireNonNull(this.getCommand("chaos")).setExecutor(new ChaosCommandExecutor(this));
 
-        eventDuration = Integer.parseInt(Objects.requireNonNull(chaosConfigHandler.chaosConfig.getString("config.event-duration")));
+        settings = new ChaosSettings(
+                configHandler.config.getInt("config.event-duration"),
+                configHandler.config.getBoolean("config.spoilers"),
+                configHandler.config.getInt("config.delay")
+        );
 
         getLogger().info("Chaos loaded.");
     }
 
     @Override
     public void onDisable() {
-        if(currentChaosEvent != null) {
-            for(String username : chaosPlayers) {
-                currentChaosEvent.onDisable(username, this);
-            }
-        }
+        this.stopChaos();
+
         getLogger().info("Chaos disabled.");
     }
 }

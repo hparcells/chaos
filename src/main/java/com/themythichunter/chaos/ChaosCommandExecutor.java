@@ -1,7 +1,6 @@
 package com.themythichunter.chaos;
 
 import com.themythichunter.chaos.task.RunCycleTask;
-import com.themythichunter.chaos.task.StopTask;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
@@ -36,8 +35,8 @@ public class ChaosCommandExecutor implements CommandExecutor {
         }
         if(args[0].equalsIgnoreCase("add")) {
             if(args[1] != null) {
-                if(!plugin.chaosPlayers.contains(args[1])) {
-                    plugin.chaosPlayers.add(args[1]);
+                if(!plugin.settings.chaosPlayers.contains(args[1])) {
+                    plugin.settings.chaosPlayers.add(args[1]);
                 }
                 sender.sendMessage(ChatColor.GREEN + args[1] + " has been added to the chaos players list.");
                 return true;
@@ -48,7 +47,7 @@ public class ChaosCommandExecutor implements CommandExecutor {
         }
         if(args[0].equalsIgnoreCase("remove")) {
             if(args[1] != null) {
-                plugin.chaosPlayers.remove(args[1]);
+                plugin.settings.chaosPlayers.remove(args[1]);
                 sender.sendMessage(ChatColor.GREEN + args[1] + " has been removed from  the chaos players list.");
                 return true;
             }else {
@@ -59,7 +58,14 @@ public class ChaosCommandExecutor implements CommandExecutor {
         if(args[0].equalsIgnoreCase("start")) {
             if(!isRunning) {
                 Bukkit.broadcastMessage(ChatColor.GREEN + "Starting the chaos...");
-                plugin.scheduler.runTaskLater(plugin, new RunCycleTask(plugin), plugin.eventDuration * 20L);
+                for(String username : plugin.settings.chaosPlayers) {
+                    Player player = Bukkit.getPlayer(username);
+
+                    if(player != null) {
+                        player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1, 2);
+                    }
+                }
+                plugin.scheduler.runTaskLater(plugin, new RunCycleTask(plugin), plugin.settings.eventDuration * 20L);
                 isRunning = true;
             }else {
                 sender.sendMessage(ChatColor.RED + "Can not start another chaos game when another one is in progress.");
@@ -68,20 +74,29 @@ public class ChaosCommandExecutor implements CommandExecutor {
         }
         if(args[0].equalsIgnoreCase("stop")) {
             Bukkit.broadcastMessage(ChatColor.RED + "Stopping the chaos...");
-            plugin.scheduler.runTask(plugin, new StopTask(plugin));
+            for(String username : plugin.settings.chaosPlayers) {
+                Player player = Bukkit.getPlayer(username);
+
+                if(player != null) {
+                    player.playSound(player.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1, 1);
+                }
+            }
+
+            plugin.stopChaos();
+
             isRunning = false;
 
             return true;
         }
         if(args[0].equalsIgnoreCase("players")) {
-            String players = plugin.chaosPlayers.toString();
+            String players = plugin.settings.chaosPlayers.toString();
             sender.sendMessage(ChatColor.GREEN + "Current Chaos Players: " + players);
             return true;
         }
         if(args[0].equalsIgnoreCase("spoilers")) {
-            plugin.spoilers = !plugin.spoilers;
+            plugin.settings.spoilers = !plugin.settings.spoilers;
 
-            if(plugin.spoilers) {
+            if(plugin.settings.spoilers) {
                 Bukkit.broadcastMessage(ChatColor.GREEN + "Spoilers: ON");
             }else {
                 Bukkit.broadcastMessage(ChatColor.RED + "Spoilers: OFF");

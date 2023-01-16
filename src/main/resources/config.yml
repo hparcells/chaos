@@ -1,2 +1,4 @@
 config:
+  delay: 3
   event-duration: 30
+  spoilers: false

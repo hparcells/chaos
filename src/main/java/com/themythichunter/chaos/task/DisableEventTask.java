@@ -10,10 +10,6 @@ public class DisableEventTask implements Runnable {
     }
 
     public void run() {
-        if(plugin.currentChaosEvent != null) {
-            for(String username : plugin.chaosPlayers) {
-                plugin.currentChaosEvent.onDisable(username, plugin);
-            }
-        }
+        plugin.stopCurrentEvent();
     }
 }
